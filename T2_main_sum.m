@@ -5,14 +5,14 @@ N_set=(500:50:2000);
 social_wol=N_set.*0;
 
 for pk=1:length(N_set)     
-    dataS=randi(3,N_set(pk),1).*100; %生成500*1的数据
-    dataT=randi(3,N_set(pk),1).*10;  %生成500*1的数据
+    dataS=randi(3,N_set(pk),1).*100;
+    dataT=randi(3,N_set(pk),1).*10;
     
     times=N_set(pk);    
     index1=floor(times*0.4);
     index2=floor(times*0.6);
     
-    %选出的40%可能不能整除2
+
     if mod(index1,2)==0
         num2_groupS=dataS(1:index1);
         num2_groupT=dataT(1:index1);
@@ -21,10 +21,10 @@ for pk=1:length(N_set)
         num2_groupT=dataT(1:index1+1);
     end
     
-    %向量倒置
+
     TdataT=fliplr(dataT);
     TdataS=fliplr(dataS);
-    %选出的后60%可能不能整除3
+
     if mod(index2,3)==0
         num3_groupS=TdataS(1:index2); 
         num3_groupT=TdataT(1:index2); 
@@ -47,7 +47,7 @@ for pk=1:length(N_set)
     
     for i=1:length(num2_groupS)/2
          s =num2_groupMS(i,:)./100; 
-         st =num2_groupMT(i,:);  %  
+         st =num2_groupMT(i,:);
          Max_p2=two_p_sum(s,st);
          max_valu2(i)=Max_p2;   
     end
